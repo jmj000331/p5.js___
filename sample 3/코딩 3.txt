@@ -1,0 +1,120 @@
+let faceX, faceY;
+let bgColor;
+let ribbonColor;
+let offsetX = 100;
+let offsetY = -30;
+
+function setup() {
+  createCanvas(600, 400);
+  bgColor = color(255);
+  ribbonColor = color(255, 100, 100);
+
+  faceX = 200 + offsetX;
+  faceY = 230 + offsetY;
+}
+
+function draw() {
+  background(bgColor);
+
+
+  let x = faceX + map(mouseX, 0, width, -20, 20);
+  let y = faceY + map(mouseY, 0, height, -20, 20);
+
+  
+  let ribbonOffset = sin(frameCount * 0.1) * 5;
+
+-
+  fill(255, 230, 200);
+  stroke(0);
+  ellipse(x, y, 160, 200);
+
+
+  fill(255);
+  ellipse(x - 35, y - 20, 40, 25);
+  ellipse(x + 35, y - 20, 40, 25);
+
+  fill(50, 30, 20);
+  ellipse(x - 35, y - 20, 12, 12);
+  ellipse(x + 35, y - 20, 12, 12);
+
+
+  stroke(0);
+  line(x - 50, y - 30, x - 40, y - 25);
+  line(x - 45, y - 35, x - 35, y - 25);
+  line(x + 40, y - 25, x + 50, y - 30);
+  line(x + 35, y - 25, x + 45, y - 35);
+
+
+  strokeWeight(2);
+  stroke(60, 40, 20);
+  arc(x, y - 60, 220, 200, PI, TWO_PI);
+
+  arc(x - 35, y - 40, 40, 15, PI, TWO_PI);
+  arc(x + 35, y - 40, 40, 15, PI, TWO_PI);
+  strokeWeight(1);
+
+ 
+  stroke(100, 70, 50);
+  line(x, y - 15, x, y + 10);
+  arc(x, y + 10, 20, 10, 0, PI);
+
+  if (mouseIsPressed) {
+   
+    fill(255, 80, 120);
+    arc(x, y + 45, 50, 15, PI, 0);
+  } else {
+    
+    fill(255, 100, 150);
+    arc(x, y + 40, 50, 20, 0, PI);
+    arc(x, y + 45, 50, 20, PI, 0);
+  }
+
+  
+  fill(255, 230, 200);
+  ellipse(x - 80, y, 20, 40);
+  ellipse(x + 80, y, 20, 40);
+
+  
+  fill(30, 20, 10);
+  noStroke();
+  ellipse(x - 80, y + 30, 60, 160);
+  ellipse(x + 80, y + 30, 60, 160);
+
+  
+  fill(ribbonColor);
+  ellipse(x, y - 90 + ribbonOffset, 20, 20);
+  triangle(x - 10, y - 90 + ribbonOffset, x - 25, y - 110 + ribbonOffset, x - 25, y - 70 + ribbonOffset);
+  triangle(x + 10, y - 90 + ribbonOffset, x + 25, y - 110 + ribbonOffset, x + 25, y - 70 + ribbonOffset);
+
+ 
+  fill(255, 230, 200);
+  rect(x - 20, y + 70, 40, 40);
+
+ 
+  fill(180, 150, 255);
+  rect(x - 60, y + 110, 120, 80, 20);
+
+  fill(255);
+  ellipse(x, y + 130, 10, 10);
+
+  
+  fill(255, 200, 0);
+  ellipse(x - 80, y + 20, 8, 8);
+  ellipse(x + 80, y + 20, 8, 8);
+}
+
+
+function mousePressed() {
+  ribbonColor = color(random(255), random(100, 200), random(100, 200));
+}
+
+
+function keyPressed() {
+  if (key === '1') {
+    bgColor = color(255, 255, 200); 
+  } else if (key === '2') {
+    bgColor = color(200, 255, 255);
+  } else if (key === '3') {
+    bgColor = color(240, 200, 255); 
+  }
+}

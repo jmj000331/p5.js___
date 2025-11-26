@@ -1,0 +1,80 @@
+function setup() {
+  createCanvas(600, 400);
+  colorMode(RGB);
+}
+
+function draw() {
+  background(200, 225, 255);
+
+
+  let t = frameCount * 0.02;    
+  let wobble = sin(t) * 10;      
+  let grow = 1 + sin(t) * 0.2;    
+  let shiftX = cos(t) * 15;       
+  let shiftY = sin(t) * 15;       
+
+
+  let c1 = color(255, 120, 120);
+  let c2 = color(0, 120, 255);
+  let mix = (sin(t) + 1) / 2;
+  let animatedColor = lerpColor(c1, c2, mix);
+
+  stroke(0);
+  strokeWeight(2);
+
+
+  fill(130, 0, 130, 220);
+  ellipse(135 + shiftX, 165 + shiftY, 50 * grow, 50 * grow);
+
+
+  fill(animatedColor);
+  rect(70 + shiftX, 110 + shiftY, 90, 70);
+
+
+  fill(70, 140, 255);
+  beginShape();
+  vertex(145 + wobble, 60);
+  vertex(185 + wobble, 110);
+  vertex(160 + wobble, 185);
+  vertex(120 + wobble, 140);
+  endShape(CLOSE);
+
+
+
+  fill(130, 0, 130, 220);
+  ellipse(330 + shiftX, 155 + shiftY, 50 * grow, 50 * grow);
+
+  fill(animatedColor);
+  rect(300 + shiftX, 110 + shiftY, 70, 70);
+
+
+  stroke(0);
+  line(50, 330, 380, 60);
+
+
+  noStroke();
+  fill(0, 255, 0);
+  arc(140 + shiftX * 0.5, 300 + shiftY * 0.5, 120, 120, 0, PI, CHORD);
+
+
+  stroke(0);
+  strokeWeight(2);
+  line(80 + shiftX * 0.5, 300 + shiftY * 0.5, 140 + shiftX * 0.5, 360 + shiftY * 0.5);
+  line(200 + shiftX * 0.5, 300 + shiftY * 0.5, 140 + shiftX * 0.5, 360 + shiftY * 0.5);
+
+
+
+
+  noStroke();
+  fill(0, 255, 0);
+  ellipse(380 + shiftX, 300 + shiftY, 110 * grow, 110 * grow);
+
+
+  fill(200, 225, 255);
+  arc(380 + shiftX, 280 + shiftY, 90, 90, PI + 0.2, TWO_PI - 0.3, PIE);
+
+
+  fill(240, 240, 120, 120);
+  stroke(0);
+  ellipse(360 + shiftX, 220 + shiftY, 130 * grow, 130 * grow);
+}

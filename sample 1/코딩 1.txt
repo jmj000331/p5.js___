@@ -1,0 +1,74 @@
+function setup() {
+  createCanvas(600, 400);
+  colorMode(RGB);
+}
+
+function draw() {
+  background(200, 225, 255);
+
+  
+  let wobble = 0;         
+  let grow = 1;          
+  let shiftX = 0;        
+  let shiftY = 0;        
+
+ 
+  let animatedColor = color(255, 120, 120);
+
+  stroke(0);
+  strokeWeight(2);
+
+ 
+  fill(130, 0, 130, 220);
+  ellipse(135 + shiftX, 165 + shiftY, 50 * grow, 50 * grow);
+
+  
+  fill(animatedColor);
+  rect(70 + shiftX, 110 + shiftY, 90, 70);
+
+
+  fill(70, 140, 255);
+  beginShape();
+  vertex(145 + wobble, 60);
+  vertex(185 + wobble, 110);
+  vertex(160 + wobble, 185);
+  vertex(120 + wobble, 140);
+  endShape(CLOSE);
+
+
+  fill(130, 0, 130, 220);
+  ellipse(330 + shiftX, 155 + shiftY, 50 * grow, 50 * grow);
+
+
+  fill(animatedColor);
+  rect(300 + shiftX, 110 + shiftY, 70, 70);
+
+ 
+  stroke(0);
+  line(50, 330, 380, 60);
+
+  
+  noStroke();
+  fill(0, 255, 0);
+  arc(140, 300, 120, 120, 0, PI, CHORD);
+
+ 
+  stroke(0);
+  strokeWeight(2);
+  line(80, 300, 140, 360);
+  line(200, 300, 140, 360);
+
+ 
+  noStroke();
+  fill(0, 255, 0);
+  ellipse(380, 300, 110, 110);
+
+
+  fill(200, 225, 255);
+  arc(380, 280, 90, 90, PI + 0.2, TWO_PI - 0.3, PIE);
+
+
+  fill(240, 240, 120, 120);
+  stroke(0);
+  ellipse(360, 220, 130, 130);
+}
